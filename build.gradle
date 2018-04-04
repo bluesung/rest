@@ -46,7 +46,7 @@ configurations {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
-//	compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.boot:spring-boot-starter-security')
 	compile 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0'
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('com.fasterxml.jackson.module:jackson-module-kotlin')

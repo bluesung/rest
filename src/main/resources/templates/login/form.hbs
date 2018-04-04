@@ -1,0 +1,11 @@
+{{#if error}}
+	<stron>로그인 실패</stron>
+{{/if}}
+{{#if logout}}
+	<stron>로그아웃</stron>
+{{/if}}
+<form action="/login" method="post">
+	<input name="username" placeholder="id"/>
+	<input name="password" type="password" placeholder="password"/>
+	<button type="submit">확인</button>
+</form>

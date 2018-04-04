@@ -3,6 +3,7 @@ package com.rest.rest.web.register
 import com.rest.rest.domain.user.User
 import com.rest.rest.domain.user.UserService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -25,7 +26,7 @@ class RegisterController {
                     .addObject("form", form)
                     .addObject("error", "${form.id}가 이미 있습니다.")
         }
-        var user = User(form.id, form.name, form.email, form.password)
+        var user = User(form.id, form.name, form.email, BCryptPasswordEncoder().encode(form.password))
         userService.save(user);
         return ModelAndView("redirect:/")
     }
