@@ -47,12 +47,18 @@ configurations {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 //	compile('org.springframework.boot:spring-boot-starter-security')
-	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0'
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('com.fasterxml.jackson.module:jackson-module-kotlin')
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	compile("org.jetbrains.kotlin:kotlin-reflect")
+	compileOnly 'org.projectlombok:lombok:1.16.20'
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.security:spring-security-test')
+
+	compile 'com.github.jknack:handlebars-helpers:4.0.6',
+			'com.github.jknack:handlebars-jackson2:4.0.6',
+			'com.github.jknack:handlebars-humanize:4.0.6',
+			'com.github.jknack:handlebars-markdown:4.0.6'
 }
