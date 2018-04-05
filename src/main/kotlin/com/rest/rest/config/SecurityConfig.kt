@@ -1,6 +1,7 @@
 package com.rest.rest.config
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.context.annotation.Bean
 import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
@@ -21,7 +22,7 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
     }
 
     @Autowired
-    fun configureGlobal(auth: AuthenticationManagerBuilder, userDetailsService: UserDetailsService) {
+    fun configureGlobal(auth: AuthenticationManagerBuilder, @Qualifier("userDetailServiceImpl") userDetailsService: UserDetailsService) {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder())
     }
 
@@ -32,8 +33,6 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity) {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/login").permitAll()
-                .antMatchers(HttpMethod.POST, "/login").permitAll()
                 .antMatchers("/register").permitAll()
                 .antMatchers(HttpMethod.POST, "/register").permitAll()
                 .antMatchers("/").permitAll()

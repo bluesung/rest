@@ -1,5 +1,6 @@
 package com.rest.rest.domain.user
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.LastModifiedDate
@@ -14,7 +15,8 @@ class User(
         var id: String,
         var name: String,
         var email: String,
-        internal var password: String,
+        @field:JsonIgnore
+        var encPassword: String,
         var auths: List<String> = listOf(),
         @CreatedDate
         var createdAt: LocalDateTime = LocalDateTime.now(),
@@ -39,12 +41,9 @@ class User(
                 return true
         }
 
+        @JsonIgnore
         override fun getPassword(): String {
-                return password
-        }
-
-        fun setPassword(password: String) {
-                this.password = password
+                return encPassword
         }
 
         override fun isAccountNonExpired(): Boolean {
